@@ -44,5 +44,6 @@ p.then((data) => {
     .then((data) => {
       console.log("Modified", data);
     })
-    .catch((err) => console.error("Error:", err));
+    .catch((err) => console.error("Error:", err))
+    .finally(() => console.log("Finally"));
 });
