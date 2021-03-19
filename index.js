@@ -62,3 +62,7 @@ function sleep(ms) {
 Promise.all([sleep(2000), sleep(5000)]).then(() => {
   console.log("All promises");
 });
+
+Promise.race([sleep(2000), sleep(5000)]).then(() => {
+  console.log("Race promises");
+});
