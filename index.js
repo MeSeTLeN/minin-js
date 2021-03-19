@@ -15,35 +15,46 @@ console.log("Request data...");
 //   }, 2000);
 // }, 2000);
 
-const p = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    console.log("Preparing data...");
+// const p = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     console.log("Preparing data...");
 
-    const backendData = {
-      server: "aws",
-      port: 2000,
-      status: "working",
-    };
-    resolve(backendData);
-  }, 2000);
-});
+//     const backendData = {
+//       server: "aws",
+//       port: 2000,
+//       status: "working",
+//     };
+//     resolve(backendData);
+//   }, 2000);
+// });
 
-p.then((data) => {
-  return new Promise((resolve, reject) => {
+// p.then((data) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       data.modified = true;
+//       resolve(data);
+//     }, 2000);
+//   })
+
+//     .then((clientData) => {
+//       clientData.fromPromise = true;
+
+//       return clientData;
+//     })
+//     .then((data) => {
+//       console.log("Modified", data);
+//     })
+//     .catch((err) => console.error("Error:", err))
+//     .finally(() => console.log("Finally"));
+// });
+
+function sleep(ms) {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      data.modified = true;
-      resolve(data);
-    }, 2000);
-  })
+      resolve();
+    }, ms);
+  });
+}
 
-    .then((clientData) => {
-      clientData.fromPromise = true;
-
-      return clientData;
-    })
-    .then((data) => {
-      console.log("Modified", data);
-    })
-    .catch((err) => console.error("Error:", err))
-    .finally(() => console.log("Finally"));
-});
+sleep(2000).then(() => console.log("After 2 sec"));
+sleep(3000).then(() => console.log("After 3 sec"));
