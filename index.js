@@ -56,5 +56,9 @@ function sleep(ms) {
   });
 }
 
-sleep(2000).then(() => console.log("After 2 sec"));
-sleep(3000).then(() => console.log("After 3 sec"));
+// sleep(2000).then(() => console.log("After 2 sec"));
+// sleep(3000).then(() => console.log("After 3 sec"));
+
+Promise.all([sleep(2000), sleep(5000)]).then(() => {
+  console.log("All promises");
+});
