@@ -24,5 +24,6 @@ const lena = {
   age: 23,
 };
 
-const fnLenaInfoLog = person.logInfo.bind(lena);
-fnLenaInfoLog("Frontend", "+380-99-99-99-999");
+// const fnLenaInfoLog = person.logInfo.bind(lena);
+// fnLenaInfoLog("Frontend", "+380-99-99-99-999");
+person.logInfo.call(lena, "Frontend", "+380-99-99-99-999");
