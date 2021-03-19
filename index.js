@@ -29,16 +29,18 @@ const p = new Promise((resolve, reject) => {
 });
 
 p.then((data) => {
-  console.log("Promise resolved");
-  console.log(data);
-  const p2 = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       data.modified = true;
       resolve(data);
     }, 2000);
-  });
+  })
+    .then((clientData) => {
+      clientData.fromPromise = true;
 
-  p2.then((clientData) => {
-    console.log("Data received", clientData);
-  });
+      return clientData;
+    })
+    .then((data) => {
+      console.log("Modified", data);
+    });
 });
