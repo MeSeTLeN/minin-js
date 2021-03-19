@@ -26,4 +26,5 @@ const lena = {
 
 // const fnLenaInfoLog = person.logInfo.bind(lena);
 // fnLenaInfoLog("Frontend", "+380-99-99-99-999");
-person.logInfo.call(lena, "Frontend", "+380-99-99-99-999");
+// person.logInfo.call(lena, "Frontend", "+380-99-99-99-999");
+person.logInfo.apply(lena, ["Frontend", "+380-99-99-99-999"]);
