@@ -9,3 +9,6 @@ const person = new Object({
 Object.prototype.sayHello = function () {
   console.log("Hello");
 };
+
+const lena = Object.create(person);
+lena.name = "Elena";
