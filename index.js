@@ -22,19 +22,35 @@
 // console.log(addTen(10));
 // console.log(addTen(41));
 
-function urlGenerator(domain) {
-  return function (url) {
-    return `https://${url}.${domain}`;
+// function urlGenerator(domain) {
+//   return function (url) {
+//     return `https://${url}.${domain}`;
+//   };
+// }
+
+// const comUrl = urlGenerator("com");
+// const ruUrl = urlGenerator("ru");
+
+// console.log(comUrl("google"));
+// console.log(comUrl("netflix"));
+
+// console.log(ruUrl("yandex"));
+// console.log(ruUrl("vkontakte"));
+
+// console.log(comUrl("vkontakte"));
+
+function bind(context, fn) {
+  return function (...args) {
+    fn.apply(context, args);
   };
 }
 
-const comUrl = urlGenerator("com");
-const ruUrl = urlGenerator("ru");
+function logPerson(params) {
+  console.log(`Person: ${this.name}, ${this.age}, ${this.job}`);
+}
 
-console.log(comUrl("google"));
-console.log(comUrl("netflix"));
+const person1 = { name: "Mihail", age: 24, job: "Frontend" };
+const person2 = { name: "Lena", age: 30, job: "SMM" };
 
-console.log(ruUrl("yandex"));
-console.log(ruUrl("vkontakte"));
-
-console.log(comUrl("vkontakte"));
+bind(person1, logPerson)();
+bind(person2, logPerson)();
