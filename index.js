@@ -35,6 +35,7 @@ p.then((data) => {
       resolve(data);
     }, 2000);
   })
+
     .then((clientData) => {
       clientData.fromPromise = true;
 
@@ -42,5 +43,6 @@ p.then((data) => {
     })
     .then((data) => {
       console.log("Modified", data);
-    });
+    })
+    .catch((err) => console.error("Error:", err));
 });
